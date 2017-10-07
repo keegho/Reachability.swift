@@ -153,7 +153,7 @@ let reachability = Reachability()!
 
 //declare this inside of viewWillAppear
 
-     NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(_:)), name: .reachabilityChanged, object: reachability)
+     NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
     do{
       try reachability.startNotifier()
     }catch{
@@ -164,7 +164,7 @@ let reachability = Reachability()!
 and
 
 ```swift
-func reachabilityChanged(note: Notification) {
+@ objc func reachabilityChanged(note: Notification) {
 
   let reachability = note.object as! Reachability
 
@@ -183,7 +183,7 @@ and for stopping notifications
 
 ```swift
 reachability.stopNotifier()
-NotificationCenter.default.removeObserver(self, name: .eachabilityChanged, object: reachability)
+NotificationCenter.default.removeObserver(self, name: .reachabilityChanged, object: reachability)
 ```
 
 ## Want to help?
